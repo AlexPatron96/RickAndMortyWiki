@@ -12,40 +12,98 @@ body {
   overflow-x: hidden !important;
 }
 
+
+/* ======================= */
 .contImgLoader {
-  display: flex;
-  align-content: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: grid;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  width: 97%;
-  height: 98%;
 }
 
 @keyframes load {
-	0% {
-		top: 0;
-	}
-	50% {
-		top: -30px;
-	}
-	100% {
-		top: 0;
-	}
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -30px;
+  }
+
+  100% {
+    top: 0;
+  }
 }
 
 .imgLoader {
   width: 310px;
-	position: relative;
-	animation: load 1.5s infinite;
+  position: relative;
+  animation: load 1.5s infinite;
 }
-.contFrontpage{
+
+.contFrontpage {
   display: flex;
   flex-direction: column;
-}
-.imgFrontpage{
 
 }
+
+.imgFrontpage {
+  margin-top: 0.5rem;
+  max-width: 1334px;
+  height: 200px;
+  object-fit: cover;
+  box-shadow: 1px 1px 10px 4px #acd929;
+  border-bottom: 4px solid #acd929;
+}
+
+/* ======================= */
+.contSearchJsx {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+
+}
+
+.contSearchValue {
+  display: flex;
+  justify-content: center;
+}
+
+.contSearchValue>input {
+  background-color: #00b4ccd3;
+  border: 4px solid #add929;
+  border-top: 0;
+  border-bottom-left-radius: 15px;
+  width: 250px;
+  height: 30px;
+}
+
+.contSearchValue>button {
+  background-color: #00b4ccd3;
+  border: 4px solid #add929;
+  border-top: 0;
+  border-bottom-right-radius: 15px;
+  width: 70px;
+  font-weight: 800;
+}
+
+.contSearchResult {
+  background-color: #00b4ccd3;
+  border: 4px solid #add929;
+  border-top: 0;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 250px;
+  position: absolute;
+  margin-top: 30px;
+}
+
+/* ======================= */
 .rick {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -90,9 +148,24 @@ body {
   align-content: center;
   gap: 2rem;
 }
-#particles-js{
+
+#particles-js {
   height: 100vh;
   width: 100%;
   position: fixed;
   z-index: -1;
+}
+
+@media screen and (min-width: 480px) {
+  .imgFrontpage {
+    height: 225px;
+  }
+}
+
+@media screen and (min-width: 720px) {}
+
+@media screen and (min-width: 1024px) {
+  .imgFrontpage {
+    height: 340px;
+  }
 }

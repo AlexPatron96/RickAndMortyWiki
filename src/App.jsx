@@ -24,7 +24,7 @@ function App() {
 
     return (
         <div className="App">
-            <div id="particles-js"></div>
+            
             {loading ? <Loader />
                 : <HomeRandM apiRickyMorty={apiRickyMorty} setApiRickyMorty={setApiRickyMorty} />
             }

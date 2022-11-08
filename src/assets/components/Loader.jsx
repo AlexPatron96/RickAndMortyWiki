@@ -3,7 +3,7 @@ import ImgLoad from '../img/letras-rym.png'
 
 const Loader = () => {
     return (
-        <div >
+        <div className='contImgLoader'>
             <img className='imgLoader' src={ImgLoad} alt="" />
         </div>
     );

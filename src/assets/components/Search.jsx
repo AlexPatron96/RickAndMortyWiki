@@ -2,16 +2,17 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-const Search = () => {
+const Search = ({selectLocation}) => {
+    
     const [apiSearch, setApiSearch] = useState({})
     const [idType, setIdType] = useState('')
-
     const searchType = () => {
         axios.get(`https://rickandmortyapi.com/api/location/?name=${idType}`)
             .then(res => setApiSearch(res.data))
     }  
     
-    console.log(apiSearch);
+
+    //console.log(apiSearch);
 
     return (
         <div>
@@ -19,7 +20,7 @@ const Search = () => {
             <button onClick={searchType}> Search</button>
             <div>
                 {apiSearch.results?.map(show => (
-                    <h1 key={show.id}>{show.name}</h1>
+                    <h5 key={show.id} onClick={() => selectLocation(show)}>{show.name}</h5>
                 ))}
             </div>
         </div>

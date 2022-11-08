@@ -1,0 +1,56 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-size: 10px;
+
+}
+.imgLoader{
+  width: 300px;
+  height: 200px;
+}
+.rick {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    ". ti ."
+    "res ty di";
+
+}
+
+.resident {
+  grid-area: res;
+}
+
+.type {
+  grid-area: ty;
+}
+
+.dimen {
+  grid-area: di;
+}
+
+.title {
+  grid-area: ti;
+}
+
+.person {
+  display: flex;
+  background-color: azure;
+  width: 250px;
+  height: 400px;
+  color: gray;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+
+}
+
+.ulPerson {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 2rem;
+}

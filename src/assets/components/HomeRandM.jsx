@@ -62,7 +62,7 @@ const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
     const onPageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
         const firstIndex = pageNumber * 10
-        setItems([...apiRickyMorty.residents].splice(firstIndex - 10, 10))
+        setItems([...apiRickyMorty.residents].splice((firstIndex - 10), 10))
 
     }
     /*===========================================*/
@@ -85,24 +85,29 @@ const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
 
     return (
         <div>
+
             <div className='contFrontpage'>
                 <img className='imgFrontpage' src={imgPortada} alt="" />
                 <Search selectLocation={selectLocation} />
             </div>
 
-            <div className='rick'>
-                <h1 className='title'>{apiRickyMorty.name}</h1>
-                <h2 className='dimen'> Dimension: {apiRickyMorty.dimension}</h2>
-                <h2 className='type'> Type: {apiRickyMorty.type}</h2>
-                <h2 className='resident'> Population: {apiRickyMorty.residents?.length}</h2>
+            <div className='contInfoPage'>
+                <h2 className='title'>{apiRickyMorty.name}</h2>
+                <div className='location'>
+                    <h3 className='type'> Type: <br /> <span className='infLoc'> {apiRickyMorty.type}</span> </h3>
+                    <h3 className='dimen'> Dimension: <br /> <span className='infLoc'> {apiRickyMorty.dimension}</span> </h3>
+                    <h3 className='resident'> Population: <br /> <span className='infLoc'>{apiRickyMorty.residents?.length}</span> </h3>
+                </div>
+                <ul className='ulPerson'>
+                    {items.map(habitant => (
+                        <ResidentInfo key={habitant} habitant={habitant} ></ResidentInfo>
+                    ))}
+                </ul>
             </div>
-            <ul className='ulPerson'>
-                {items.map(habitant => (
-                    <ResidentInfo key={habitant} habitant={habitant} ></ResidentInfo>
-                ))}
-            </ul>
-            {pageNumbers}
-            <Pagination maxPage={maxPage} handlePageClick={handlePageClick} currentPage={currentPage} nextPag={nextPag} previousPage={previousPage} />
+
+
+            <Pagination pageNumbers={pageNumbers} maxPage={maxPage} handlePageClick={handlePageClick} currentPage={currentPage} nextPag={nextPag} previousPage={previousPage} />
+
 
         </div>
     );

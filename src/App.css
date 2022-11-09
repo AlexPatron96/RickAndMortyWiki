@@ -56,8 +56,9 @@ body {
   max-width: 1334px;
   height: 200px;
   object-fit: cover;
-  box-shadow: 1px 1px 10px 4px #acd929;
-  border-bottom: 4px solid #acd929;
+  transition: ease 1s;
+  /* box-shadow: 1px 1px 10px 4px #acd929; */
+  /* border-bottom: 3px solid #acd929; */
 }
 
 /* ======================= */
@@ -72,46 +73,83 @@ body {
 .contSearchValue {
   display: flex;
   justify-content: center;
+
 }
 
 .contSearchValue>input {
-  background-color: #00b4ccd3;
-  border: 4px solid #add929;
+  background-color: rgba(245, 245, 245, 0.471);
+  border: 2px solid #add929;
   border-top: 0;
   border-bottom-left-radius: 15px;
   width: 250px;
   height: 30px;
+  /* box-shadow: 1px 1px 10px 4px #acd929; */
+  padding: 0.5rem;
 }
 
 .contSearchValue>button {
   background-color: #00b4ccd3;
-  border: 4px solid #add929;
+  border: 2px solid #add929;
   border-top: 0;
   border-bottom-right-radius: 15px;
   width: 70px;
   font-weight: 800;
+  /* box-shadow: 1px 1px 10px 4px #acd929; */
 }
 
 .contSearchResult {
-  background-color: #00b4ccd3;
-  border: 4px solid #add929;
+  background-color: rgb(245, 245, 245);
+  ;
+  border: 2px solid #add929;
   border-top: 0;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-  width: 250px;
+  width: 275px;
   position: absolute;
   margin-top: 30px;
+  color: gray;
+}
+
+.contSearchResult.hiddenResult {
+  display: none;
+}
+
+.contSearchResult>h5 {
+  margin: 0.5rem;
+  font-size: 15px;
 }
 
 /* ======================= */
-.rick {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    ". ti ."
-    "res ty di";
+.contInfoPage {
+  display: flex;
+  margin: 1rem 2rem;
+  flex-direction: column;
+  align-items: center;
+}
 
+/* ======================= */
+.location {
+  display: flex;
+  flex-direction: column;
+  background: rgba(245, 245, 245, 0.471);
+  width: 300px;
+  max-height: 175px;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 5px;
+  transition: ease 1s;
+}
+
+.location>h3 {
+  font-size: 15px;
+  color: white;
+  font-weight: 100;
+}
+
+.infLoc {
+  font-size: 17px;
+  color: white;
+  font-weight: 600;
 }
 
 .resident {
@@ -120,33 +158,100 @@ body {
 
 .type {
   grid-area: ty;
+
 }
 
 .dimen {
   grid-area: di;
+
 }
 
 .title {
   grid-area: ti;
+  font-size: 22px;
+  color: white;
+  font-weight: 600;
 }
 
-.person {
+/* ======================= */
+.contPersonInfo {
   display: flex;
-  background-color: azure;
-  width: 250px;
-  height: 400px;
-  color: gray;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
+  background: rgba(245, 245, 245, 0.471);
+  width: 250px;
+  max-height: 500px;
+  border-radius: 25px;
+}
 
+.contPersonInfo:hover {
+  box-shadow: 1px 1px 10px 4px #acd929;
+}
+
+.imgPerson {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.contPersonInfo>li {
+  margin: 0.125rem 1rem;
+}
+
+.contPersonInfo>li>h3 {
+  font-size: 17px;
+}
+
+.contPersonInfo>li>h4 {
+  font-size: 11px;
+  color: white;
+  text-align: initial;
+  font-weight: 100;
+}
+
+.contPersonInfo>li>h5 {
+  font-size: 15px;
+  color: white;
+  text-align: initial;
+  font-weight: 600;
 }
 
 .ulPerson {
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
   gap: 2rem;
+  margin: 2rem 0;
+  justify-content: space-evenly;
+
+}
+
+/* ======================= */
+.contPagination {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem;
+}
+.contPagination > button {
+  margin: 0 0.25rem;
+  width: 25px;
+  /*  */
+  border: 2px solid #add929;
+  border-radius: 4px;
+}
+.contPagination>li:hover{
+  box-shadow: 1px 1px 10px 4px #acd929;
+  cursor: pointer;
+}
+.contPagination>li {
+  list-style: none;
+  display: flex;
+  width: 25px;
+  background: rgba(245, 245, 245, 0.471);
+  margin: 0 0.25rem;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
 }
 
 #particles-js {
@@ -162,7 +267,14 @@ body {
   }
 }
 
-@media screen and (min-width: 720px) {}
+@media screen and (min-width: 720px) {
+  .location {
+    flex-direction: row;
+    width: 700px;
+    height: 100px;
+
+  }
+}
 
 @media screen and (min-width: 1024px) {
   .imgFrontpage {

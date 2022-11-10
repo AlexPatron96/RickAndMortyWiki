@@ -53,7 +53,7 @@ body {
 
 .imgFrontpage {
   margin-top: 0.5rem;
-  max-width: 1334px;
+  max-width: 2000px;
   height: 200px;
   object-fit: cover;
   transition: ease 1s;
@@ -242,17 +242,23 @@ body {
   box-shadow: 1px 1px 10px 4px #acd929;
   cursor: pointer;
 }
+.active{
+  font-weight: 800;
+  color: black;
+  background: #acd929;
+}
 .contPagination>li {
   list-style: none;
   display: flex;
   width: 25px;
-  background: rgba(245, 245, 245, 0.471);
   margin: 0 0.25rem;
   border-radius: 4px;
   justify-content: center;
   align-items: center;
   font-size: 15px;
+  border: 2px solid whitesmoke;
 }
+
 
 #particles-js {
   height: 100vh;
@@ -279,5 +285,13 @@ body {
 @media screen and (min-width: 1024px) {
   .imgFrontpage {
     height: 340px;
+  }
+  .contSearchValue>input {
+    width: 450px;
+    height: 45px;
+  }
+  .contSearchResult {
+    margin-top: 45px;
+    
   }
 }

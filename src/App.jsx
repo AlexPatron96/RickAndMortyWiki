@@ -26,7 +26,7 @@ function App() {
         <div className="App">
             
             {loading ? <Loader />
-                : <HomeRandM apiRickyMorty={apiRickyMorty} setApiRickyMorty={setApiRickyMorty} />
+                : <HomeRandM key={Math.random()*100} loading={loading} apiRickyMorty={apiRickyMorty} setApiRickyMorty={setApiRickyMorty} />
             }
         </div>
     )

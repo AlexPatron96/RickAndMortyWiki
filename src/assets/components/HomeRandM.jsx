@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense, lazy } from 'react'
 import axios from 'axios';
 import imgPortada from '../img/portada-1.2.png';
 import PersonUniverse from './PersonUniverse'
 import Search from './Search'
 import Pagination from './Pagination';
-import ResidentInfo from './ResidentInfo';
+import Loader from './Loader';
+//import ResidentInfo from './ResidentInfo';
 
-
+const ResidentInfo = lazy(() => import('./ResidentInfo'))
 
 const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
 
@@ -14,6 +15,7 @@ const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
     const [items, setItems] = useState([...apiRickyMorty.residents].splice(0, 10))
     const [currentPage, setCurrentPage] = useState(1)
     const [maxPage, setMaxPage] = useState(Math.ceil(apiRickyMorty.residents.length / 10))
+    const [idType, setIdType] = useState('')
     const pages = []
     for (let i = 1; i <= maxPage; i++) {
         pages.push(i);
@@ -28,6 +30,7 @@ const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
         setApiRickyMorty(...[show])
         setMaxPage(Math.ceil(show.residents.length / 10))
         setCurrentPage(1)
+        setIdType('')
     }
 
     /*===========================================*/
@@ -88,7 +91,7 @@ const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
 
             <div className='contFrontpage'>
                 <img className='imgFrontpage' src={imgPortada} alt="" />
-                <Search selectLocation={selectLocation} />
+                <Search setIdType={setIdType} idType={idType} selectLocation={selectLocation} />
             </div>
 
             <div className='contInfoPage'>
@@ -100,14 +103,16 @@ const HomeRandM = ({ apiRickyMorty, setApiRickyMorty }) => {
                 </div>
                 <ul className='ulPerson'>
                     {items.map(habitant => (
-                        <ResidentInfo key={habitant} habitant={habitant} ></ResidentInfo>
+                        <Suspense key={Math.random()*100}   fallback={<i class='bx bx-loader-alt bx-spin' ></i>}>
+                            <ResidentInfo key={habitant} habitant={habitant} ></ResidentInfo>
+                        </Suspense>
                     ))}
                 </ul>
             </div>
 
-
+            {/* <div className='circuloRT'></div> */}
             <Pagination pageNumbers={pageNumbers} maxPage={maxPage} handlePageClick={handlePageClick} currentPage={currentPage} nextPag={nextPag} previousPage={previousPage} />
-
+                        
 
         </div>
     );

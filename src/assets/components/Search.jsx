@@ -2,17 +2,32 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 
-const Search = ({ selectLocation }) => {
+const Search = ({ setIdType , idType, selectLocation }) => {
 
     const [apiSearch, setApiSearch] = useState({})
-    const [idType, setIdType] = useState('')
+    //const [idType, setIdType] = useState('')
+
     const searchType = () => {
         axios.get(`https://rickandmortyapi.com/api/location/?name=${idType}`)
-            .then(res => setApiSearch(res.data))
+            .then(res => setApiSearch(res.data.results))
+            selectLocation(filterPerson[0])
     }
 
+    useEffect(() => {
+        axios.get(`https://rickandmortyapi.com/api/location/?name=${idType}`)
+            .then(res => setApiSearch(res.data))
+    }, [idType])
 
-    //console.log(apiSearch);
+
+    const filterPerson = apiSearch.results?.filter((pers) => {
+        
+        if (pers.name.toUpperCase().includes(pers.name.toUpperCase())) {
+            console.log(pers.name.toUpperCase())
+            return true;
+        }
+        return false;
+    })
+    console.log(filterPerson);
 
     return (
         <div className='contSearchJsx'>
@@ -21,8 +36,8 @@ const Search = ({ selectLocation }) => {
                 <button onClick={searchType}> Search</button>
             </div>
             <div className='contSearchResult'>
-                {apiSearch.results?.map(show => (
-                    <h5 key={show.id} onClick={() => selectLocation(show)}>{show.name}</h5>
+                {filterPerson?.map(show => (
+                    <h5 className={idType ? null : "hiddenResult"} key={show.id} onClick={() => selectLocation(show)}>{show.name} - { show.id}</h5>
                 ))}
             </div>
         </div>
